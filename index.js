@@ -1,9 +1,9 @@
 const express = require("express")
-// es6Renderer = require('express-es6-template-engine')
 const app = express()
 const path = require("path")
-// const pug = require('pug')
 const pool = require("./db")
+
+app.use(express.json())
 
 app.set('views', path.join(__dirname, 'templates')); // The templates folder is where our "views" will be located. 
 app.set('view engine', 'ejs'); // the engine we set up on line 15 will be used here. 
@@ -14,6 +14,15 @@ app.set('view engine', 'ejs'); // the engine we set up on line 15 will be used h
 //ROUTES//
 
 // get equipment for energy dashboard
+
+// app.get("/dashboard", async (req, res) => {
+//     try {
+//         const allEquip = await pool.query("SELECT * FROM equipment")
+//         res.json(allEquip.rows)
+//     } catch (err) {
+//         console.error(err.message)
+//     }
+// })
 
 app.get("/dashboard", async (req, res) => {
     try {
